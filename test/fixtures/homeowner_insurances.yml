@@ -1,0 +1,45 @@
+john:
+  first_name: John
+  last_name: Doe
+  email: john@example.com
+  phone: 555-555-5555
+  address: 123 Main St
+  zip: 12345
+  city: Anytown
+  province: ON
+  assessment: 100000
+  language: english
+  homeowner_name_1: John Doe
+  type_of_property: Single-family Dwelling
+  purchase_date: <%= 2.years.ago %>
+  lot_numbers: 123
+  property_address: 123 Main St
+  property_city: Anytown
+  property_zip: 12345
+  bound_by_water: false
+  on_municipal_water: true
+  title_insurance_already_issued: true
+  denied_for_insurance: false
+
+jane:
+  first_name: Jane
+  last_name: Doe
+  email: jane@example.com
+  phone: 555-555-5555
+  address: 456 Elm St
+  zip: 67890
+  city: Othertown
+  province: ON
+  assessment: 200000
+  language: french
+  homeowner_name_1: Jane Doe
+  type_of_property: Condominium
+  purchase_date: <%= 10.years.ago %>
+  lot_numbers: 456
+  property_address: 456 Elm St
+  property_city: Othertown
+  property_zip: 67890
+  bound_by_water: true
+  on_municipal_water: false
+  title_insurance_already_issued: false
+  denied_for_insurance: true
