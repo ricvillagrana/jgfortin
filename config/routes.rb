@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'homeowner_insurances#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  resources :homeowner_insurances, only: %i[show new create]
+  post 'homeowner_insurances/new', to: 'homeowner_insurances#new_from_quote'
 end

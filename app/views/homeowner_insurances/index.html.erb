@@ -1,0 +1,31 @@
+<h2>List of homeowner insurance quotes</h2>
+
+<%= link_to 'New Homeowner Insurance', new_homeowner_insurance_path %>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Address</th>
+    <th>ZIP</th>
+    <th>City</th>
+    <th>Province</th>
+    <th>Assessment</th>
+    <th>brokerage_fees</th>
+  </tr>
+  <% @insurances.each do |insurance| %>
+    <tr>
+      <td><%= insurance.name %></td>
+      <td><%= insurance.address %></td>
+      <td><%= insurance.zip %></td>
+      <td><%= insurance.city %></td>
+      <td><%= insurance.province %></td>
+      <td><%= insurance.assessment %></td>
+      <td><%= insurance.brokerage_fees %></td>
+      <td><%= link_to 'Show', insurance %></td>
+    </tr>
+  <% end %>
+  <tr>
+  </tr>
+</table>
+
+

@@ -1,5 +1,4 @@
 class HomeownerInsurance < ApplicationRecord
-  # validate presence of many fields
   validates_presence_of %i[
     first_name last_name email phone address zip city province assessment
     language homeowner_name_1 type_of_property purchase_date lot_numbers
@@ -18,4 +17,8 @@ class HomeownerInsurance < ApplicationRecord
     '6 Units',
     'Vacant property (no building)'
   ]
+
+  def name
+    "#{first_name} #{last_name}"
+  end
 end
