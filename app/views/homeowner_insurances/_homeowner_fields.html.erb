@@ -1,0 +1,126 @@
+<hr>
+
+<h3>Transaction Information</h3>
+
+<div class="flex flex-col">
+  <div class="field">
+    <%= form.label :language %>
+    <div class="flex flex-row">
+      <% HomeownerInsurance.languages.keys.each do |language| %>
+        <label class="radio-inline">
+          <%= form.radio_button :language, language %>
+          <%= language %>
+        </label>
+      <% end %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :homeowner_name_1, 'Homeowner(s): Name(s):' %>
+    <div class="flex flex-row">
+      <%= form.text_field :homeowner_name_1, placeholder: '1st Homeowner name', required: true %>
+      <%= form.text_field :homeowner_name_2, placeholder: '2nd Homeowner name' %>
+      <%= form.text_field :homeowner_name_3, placeholder: '3rd Homeowner name' %>
+    </div>
+  </div>
+
+  <p><strong>Select / Choose:</strong></p>
+
+  <div class="field">
+    <%= form.label :type_of_property %>
+    <%= form.select :type_of_property, HomeownerInsurance.type_of_properties.keys, {}, required: true %>
+  </div>
+
+  <div class="field">
+    <p>Are you presently the owner of that property?</p>
+    <div class="flex flex-row">
+      <%= form.check_box :existing_homeowner%>
+      <%= form.label :existing_homeowner, 'Yes' %>
+    </div>
+  </div>
+
+  <div class="field">
+    <%= form.label :purchase_date %>
+    <%= form.date_field :purchase_date, required: true %>
+  </div>
+
+  <div class="field">
+    You must already own your property.
+    Property value (municipal assessment): <%= @insurance.assessment %>$
+  </div>
+</div>
+
+<hr>
+
+<h3>Property Legal Description</h3>
+
+<div class="flex flex-col">
+  <p><strong>Indicate (Mandatory fields):*</strong></p>
+
+  <div class="field">
+    <%= form.label :lot_numbers %>
+    <%= form.text_field :lot_numbers, required: true %>
+  </div>
+
+  <p>(You can find this lot number on your tax account. This is not the ID number but the lot number, cadaster number or legal description).</p>
+
+  <div class="field">
+    <%= form.label :property_address %>
+    <%= form.text_field :property_address, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_city %>
+    <%= form.text_field :property_city, required: true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :property_zip %>
+    <%= form.text_field :property_zip, required: true %>
+  </div>
+</div>
+
+<hr>
+
+<h3>Information Regarding the Property</h3>
+
+<div class="flex flex-col">
+  <p><strong>Select</strong></p>
+
+  <div class="field-row">
+    <%= render 'shared/boolean_radio_input', form: form, field: :bound_by_water, label: 'Is the Insured Property bound by water (lac, stream, river, etc.)?' %>
+  </div>
+
+  <div class="field-row">
+    <%= render 'shared/boolean_radio_input', form: form, field: :on_municipal_water, label: 'Is the Insured Property on Municipal Water and Municipal Sewer?*' %>
+  </div>
+
+  <div class="field-row">
+    <%= render 'shared/boolean_radio_input', form: form, field: :title_insurance_already_issued, label: 'Has a title insurance already been issued for the insured property according to the client ?*' %>
+  </div>
+
+  <div class="field-row">
+    <%= render 'shared/boolean_radio_input', form: form, field: :denied_for_insurance, label: 'Has a title insurance been denied for the insured property, to the best of the client\'s knowledge?*' %>
+  </div>
+</div>
+
+<hr>
+
+<h3>Notes</h3>
+
+<div class="flex flex-col">
+  <div class="field">
+    <%= form.text_area :notes, rows: 10 %>
+  </div>
+
+  <div class="field-row">
+    <%= form.label :referral_agent_name %>
+    <%= form.text_field :referral_agent_name %>
+  </div>
+
+  <div class="field-row">
+    <%= form.label :referral_agent_email %>
+    <%= form.email_field :referral_agent_email %>
+  </div>
+</div>
+

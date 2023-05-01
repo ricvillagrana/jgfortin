@@ -9,18 +9,23 @@ class HomeownerInsurancesController < ApplicationController
     @insurance = HomeownerInsurance.new
   end
 
-  def new_from_quote
+  def quote
     @insurance = HomeownerInsurance.new(homeowner_insurance_params)
+    @insurance.homeowner_name_1 = @insurance.first_name + ' ' + @insurance.last_name
+    @insurance.property_address = @insurance.address
+    @insurance.property_city = @insurance.city
+    @insurance.property_zip = @insurance.zip
     @insurance_total = InsuranceQuoteCalculatorService.new(@insurance).process
   end
 
   def create
     @insurance = HomeownerInsurance.new(homeowner_insurance_params)
+    @insurance_total = InsuranceQuoteCalculatorService.new(@insurance).process
 
     if @insurance.save
       redirect_to homeowner_insurance_path(@insurance)
     else
-      render :new
+      render :quote
     end
   end
 
