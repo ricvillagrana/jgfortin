@@ -5,6 +5,11 @@ class HomeownerInsurance < ApplicationRecord
     property_address property_city property_zip
   ]
 
+  validates :bound_by_water, inclusion: { in: [true, false] }
+  validates :on_municipal_water, inclusion: { in: [true, false] }
+  validates :title_insurance_already_issued, inclusion: { in: [true, false] }
+  validates :denied_for_insurance, inclusion: { in: [true, false] }
+
   enum language: %i[french english]
   enum type_of_property: [
     'Single-family Dwelling',

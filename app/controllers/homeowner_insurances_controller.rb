@@ -7,6 +7,16 @@ class HomeownerInsurancesController < ApplicationController
 
   def new
     @insurance = HomeownerInsurance.new
+    @insurance.first_name = 'Ricardo'
+    @insurance.last_name = 'Garcia'
+    @insurance.email = 'ricardo@axolot.io'
+    @insurance.phone = '514-555-5555'
+    @insurance.address = '1234 Rue Sainte-Catherine'
+    @insurance.zip = 'H3Z 1P9'
+    @insurance.city = 'Montreal'
+    @insurance.province = 'QC'
+    @insurance.assessment = 500_000
+    @insurance.brokerage_fees = 0.1
   end
 
   def quote
@@ -31,6 +41,7 @@ class HomeownerInsurancesController < ApplicationController
 
   def show
     @insurance = HomeownerInsurance.find(params[:id])
+    @insurance_total = InsuranceQuoteCalculatorService.new(@insurance).process
   end
 
   private
