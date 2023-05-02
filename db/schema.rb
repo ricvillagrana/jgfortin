@@ -10,7 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_28_225226) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_01_183912) do
+  create_table "callback_requests", force: :cascade do |t|
+    t.integer "homeowner_insurance_id", null: false
+    t.string "phone", null: false
+    t.integer "best_moment", null: false
+    t.boolean "reason_has_questions"
+    t.boolean "reason_prefer_to_complete_by_phone"
+    t.boolean "reason_other"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["homeowner_insurance_id"], name: "index_callback_requests_on_homeowner_insurance_id"
+  end
+
   create_table "homeowner_insurances", force: :cascade do |t|
     t.string "first_name", null: false
     t.string "last_name", null: false
@@ -44,4 +56,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_28_225226) do
     t.datetime "updated_at", null: false
   end
 
+  add_foreign_key "callback_requests", "homeowner_insurances"
 end

@@ -1,4 +1,6 @@
 class HomeownerInsurance < ApplicationRecord
+  has_one :callback_request, dependent: :destroy
+
   validates_presence_of %i[
     first_name last_name email phone address zip city province assessment
     language homeowner_name_1 type_of_property purchase_date lot_numbers

@@ -7,29 +7,17 @@ class HomeownerInsurancesController < ApplicationController
 
   def new
     @insurance = HomeownerInsurance.new
-    @insurance.first_name = 'Ricardo'
-    @insurance.last_name = 'Garcia'
-    @insurance.email = 'ricardo@axolot.io'
-    @insurance.phone = '514-555-5555'
-    @insurance.address = '1234 Rue Sainte-Catherine'
-    @insurance.zip = 'H3Z 1P9'
-    @insurance.city = 'Montreal'
-    @insurance.province = 'QC'
-    @insurance.assessment = 500_000
-    @insurance.brokerage_fees = 0.1
   end
 
   def quote
-    @insurance = HomeownerInsurance.new(homeowner_insurance_params)
-    @insurance.homeowner_name_1 = @insurance.first_name + ' ' + @insurance.last_name
-    @insurance.property_address = @insurance.address
-    @insurance.property_city = @insurance.city
-    @insurance.property_zip = @insurance.zip
+    @insurance = HomeownerInsurance.new(insurance_params)
     @insurance_total = InsuranceQuoteCalculatorService.new(@insurance).process
+
+    populate_insurance_fields
   end
 
   def create
-    @insurance = HomeownerInsurance.new(homeowner_insurance_params)
+    @insurance = HomeownerInsurance.new(insurance_params)
     @insurance_total = InsuranceQuoteCalculatorService.new(@insurance).process
 
     if @insurance.save
@@ -46,7 +34,14 @@ class HomeownerInsurancesController < ApplicationController
 
   private
 
-  def homeowner_insurance_params
+  def populate_insurance_fields
+    @insurance.homeowner_name_1 = @insurance.name
+    @insurance.property_address = @insurance.address
+    @insurance.property_city = @insurance.city
+    @insurance.property_zip = @insurance.zip
+  end
+
+  def insurance_params
     params
       .require(:homeowner_insurance)
       .permit(

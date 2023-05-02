@@ -37,7 +37,11 @@
 }
 
 .w-50 {
-  height: 50%;
+  width: 50%;
+}
+
+.gap {
+  gap: 1rem;
 }
 
 .field {
