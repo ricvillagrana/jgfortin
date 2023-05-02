@@ -1,0 +1,17 @@
+<div class="quote">
+  <h3>INSURANCE PREMIUM</h3>
+
+  <p style="font-size: 3rem;">
+  <strong><%= number_with_precision(@insurance_total, precision: 2) %>$ *</strong>
+  </p>
+
+  </p>
+
+  <p>
+  For a property valued at <%= @insurance.assessment %>$, your one time insurance premium is <%= number_with_precision(@insurance_total, precision: 2) %>$.
+  </p>
+
+  <p>
+  To complete your subscription request online, fill the form below or call us at 514-748-4873 to complete your request over the phone.
+  </p>
+</div>

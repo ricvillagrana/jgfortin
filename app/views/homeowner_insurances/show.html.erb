@@ -1,0 +1,23 @@
+<h2>Thank you for submitting!</h2>
+
+<p>
+  Here is the information you have submitted for <%= @insurance.name %>
+  for a property on <%= @insurance.property_address %>, <%= @insurance.property_city %>.
+</p>
+
+<%= render 'quote_calculation' %>
+
+<pre>
+  <%= @insurance.to_json %>
+</pre>
+
+<% if @insurance.callback_request.present? %>
+  <p>
+    We will be in touch with you shortly to discuss your quote.
+  </p>
+
+  <%= link_to 'Check your Callback', homeowner_insurance_callback_request_path(@insurance, @insurance.callback_request) %>
+<% else %>
+  <%= link_to 'Request Callback', new_homeowner_insurance_callback_request_path(@insurance) %>
+<% end %>
+

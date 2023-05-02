@@ -10,7 +10,17 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body class="container">
+    <h1>
+      Homeowner Insurances
+    </h1>
+
+    <nav>
+      <ul>
+        <li><%= link_to "Home", root_path %></li>
+      </ul>
+    </nav>
+
     <%= yield %>
   </body>
 </html>

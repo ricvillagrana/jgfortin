@@ -1,0 +1,40 @@
+<h2>Request a Callback</h2>
+
+<%= form_with(model: @callback_request, url: homeowner_insurance_callback_requests_path, data: { turbo: false }) do |form| %>
+  <div class="flex flex-col w-100 gap">
+    <div class="flex flex-row">
+      <div class="field w-50">
+        <%= form.label :phone, 'Phone number' %>
+        <%= form.text_field :phone, required: true %>
+      </div>
+
+      <div class="field w-50">
+        <%= form.label :best_moment, 'Best moment to call you' %>
+        <%= form.select :best_moment, CallbackRequest.best_moments.keys, required: true %>
+      </div>
+    </div>
+
+    <p><strong>Reason</strong></p>
+
+    <div class="field-row">
+      <%= form.check_box :reason_prefer_to_complete_by_phone %>
+      <%= form.label :reason_prefer_to_complete_by_phone, 'I prefer to complete the transaction by phone' %>
+    </div>
+
+    <div class="field-row">
+      <%= form.check_box :reason_has_questions %>
+      <%= form.label :reason_has_questions do %>
+        I have questions on Title Insurance (please visit https://jgfortin.com/en/title-insurance the answer to your questions are probably there)
+      <% end %>
+    </div>
+
+    <div class="field-row">
+      <%= form.check_box :reason_other %>
+      <%= form.label :reason_other, 'Other' %>
+    </div>
+  </div>
+
+  <div class="actions">
+  <%= form.submit 'Request a callback', class: 'btn btn-primary' %>
+  </div>
+<% end %>

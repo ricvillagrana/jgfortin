@@ -1,0 +1,32 @@
+<h2>Get a quote</h2>
+
+<% if @insurance.errors.any? %>
+  <div id="error_explanation">
+    <h2><%= pluralize(@insurance.errors.count, "error") %> were found</h2>
+
+    <ul>
+      <% @insurance.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+
+<%= render 'quote_form' %>
+
+<div class="quote">
+  <%= render 'quote_calculation' %>
+</div>
+
+<%= form_with(model: @insurance, url: homeowner_insurances_path, data: { turbo: false }) do |form| %>
+  <div style="display: none;">
+    <%= render 'quote_fields', form: form %>
+  </div>
+
+  <%= render 'homeowner_fields', form: form %>
+
+  <div class="actions">
+    <%= form.submit 'Submit' %>
+  </div>
+<% end %>
+

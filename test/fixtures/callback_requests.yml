@@ -1,0 +1,17 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+john:
+  homeowner_insurance: john
+  phone: 333-555-22-11
+  reason_has_questions: true
+  reason_prefer_to_complete_by_phone: false
+  reason_other: false
+  best_moment: 1
+
+jane:
+  homeowner_insurance: jane
+  phone: 333-555-22-11
+  reason_has_questions: true
+  reason_prefer_to_complete_by_phone: false
+  reason_other: false
+  best_moment: 1

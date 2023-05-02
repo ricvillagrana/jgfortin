@@ -13,3 +13,56 @@
  *= require_tree .
  *= require_self
  */
+
+.container {
+  margin: 0 auto;
+  max-width: 960px;
+  padding: 0 1rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-row {
+  flex-direction: row;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+.w-50 {
+  width: 50%;
+}
+
+.gap {
+  gap: 1rem;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: .55rem;
+}
+
+.field-row {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: .55rem;
+}
+
+.field label {
+  display: flex;
+  flex-direction: row;
+}
+
+.quote {
+  background-color: #f5f5f5;
+  margin-bottom: .25rem;
+  padding: .5rem;
+}
