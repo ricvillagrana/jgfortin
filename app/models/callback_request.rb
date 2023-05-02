@@ -2,6 +2,7 @@ class CallbackRequest < ApplicationRecord
   belongs_to :homeowner_insurance
 
   validates :phone, presence: true
+  validates :best_moment, presence: true
 
   enum best_moment: [
     'AM',
@@ -9,6 +10,4 @@ class CallbackRequest < ApplicationRecord
     'PM',
     'Between 4PM and 6:30PM'
   ]
-
-  serialize :reasons, Array
 end
