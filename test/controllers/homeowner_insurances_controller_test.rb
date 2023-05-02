@@ -9,8 +9,32 @@ class HomeownerInsurancesControllerTest < ActionDispatch::IntegrationTest
     assert_response :success
   end
 
+  test 'GET #show should show a homeowner insurance' do
+    homeowner_insurance = homeowner_insurances(:john)
+
+    get homeowner_insurance_path(homeowner_insurance)
+
+    assert_response :success
+  end
+
   test 'GET #new should render the new homeowner insurance form' do
     get new_homeowner_insurance_path
+
+    assert_response :success
+  end
+
+  test 'GET #quote should redirect to the new homeowner insurance form' do
+    get quote_homeowner_insurances_path
+
+    assert_redirected_to new_homeowner_insurance_path
+  end
+
+  test 'POST #quote should render the edit homeowner insurance form' do
+    params = homeowner_insurances(:john).attributes.except('id', 'created_at', 'updated_at')
+
+    post quote_homeowner_insurances_path, params: {
+      homeowner_insurance: params
+    }
 
     assert_response :success
   end
@@ -27,13 +51,5 @@ class HomeownerInsurancesControllerTest < ActionDispatch::IntegrationTest
     end
 
     assert_redirected_to homeowner_insurance_path(HomeownerInsurance.last)
-  end
-
-  test 'GET #show should show a homeowner insurance' do
-    homeowner_insurance = homeowner_insurances(:john)
-
-    get homeowner_insurance_path(homeowner_insurance)
-
-    assert_response :success
   end
 end
